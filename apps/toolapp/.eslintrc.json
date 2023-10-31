@@ -1,0 +1,6 @@
+{
+    "extends": [
+        "../../configs/eslint/.eslintrc.sveltekit.json"
+    ],
+    "ignorePatterns": ["!**/*", "vite.config.ts"]
+}

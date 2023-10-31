@@ -1,0 +1,54 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "jest-dom"],
+    "extends": [
+        "../../.eslintrc.json"
+    ],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.js", "*.svelte"],
+            "rules": {}
+        },
+        {
+            "files": ["*.ts"],
+            "rules": {}
+        },
+        {
+            "files": ["*.js"],
+            "rules": {}
+        },
+        {
+            "files": ["*.spec.ts", "*.test.ts"],
+            "extends": [
+                "plugin:jest-dom/recommended"
+            ],
+            "rules": {
+                "playwright/no-focused-test": 0,
+                "playwright/missing-playwright-await": 0,
+                "@typescript-eslint/no-explicit-any": 0
+            }
+        },
+        {
+            "files": ["*.svelte"],
+            "parser": "svelte-eslint-parser",
+            "parserOptions": {
+                "parser": "@typescript-eslint/parser"
+            },
+            "extends": [
+                "plugin:svelte/recommended"
+            ],
+            "rules": {}
+        },
+        {
+            "files": ["*.stories.ts"],
+            "extends": [
+                "plugin:playwright/recommended"
+            ],
+            "rules": {}
+        },
+        {
+            "files": ["e2e/**/*.{ts,js,tsx,jsx}"],
+            "rules": {}
+        }
+    ]
+}

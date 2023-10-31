@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "types": ["svelte", "node", "vite/client"],
+        "moduleResolution": "node",
+        "target": "es2017",
+        "verbatimModuleSyntax": true,
+        "isolatedModules": true,
+        "sourceMap": true,
+        "strict": false,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "checkJs": true,
+        "allowJs": true
+    }
+}

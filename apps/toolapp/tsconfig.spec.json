@@ -1,0 +1,17 @@
+{
+    "extends": [
+        "./tsconfig.json",
+        "../../configs/typescript/tsconfig.spec.json"
+    ],
+    "compilerOptions": {
+        "outDir": "../../dist/out-tsc"
+    },
+    "include": [
+        "vite.config.ts",
+        "../../configs/vitest/vitest.config.ts",
+        "../../configs/vitest/vitest.storybook.config.ts",
+        "src/**/*.test.ts",
+        "src/**/*.spec.ts",
+        "src/**/*.d.ts"
+    ]
+}

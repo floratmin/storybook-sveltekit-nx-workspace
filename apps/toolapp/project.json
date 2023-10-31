@@ -1,0 +1,127 @@
+{
+	"name": "toolapp",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "apps/toolapp/src",
+	"projectType": "application",
+	"tags": [],
+	"targets": {
+		"lint": {
+			"executor": "@nx/eslint:lint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["apps/toolapp/**/*.{ts,svelte,spec.ts}"]
+			}
+		},
+		"check": {
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "svelte-check",
+				"cwd": "apps/toolapp"
+			}
+		},
+		"build": {
+			"executor": "nx:run-commands",
+			"defaultConfiguration": "production",
+			"options": {
+				"command": "vite build",
+				"cwd": "apps/toolapp"
+			},
+			"configurations": {
+				"development": {
+					"options": {
+						"command": "vite dev",
+						"cwd": "apps/toolapp"
+					}
+				},
+				"production": {
+					"options": {
+						"command": "vite build",
+						"cwd": "apps/toolapp"
+					}
+				}
+			}
+		},
+		"serve": {
+			"executor": "nx:run-commands",
+			"defaultConfiguration": "development",
+			"options": {
+				"command": "vite dev",
+				"cwd": "apps/toolapp"
+			},
+			"configurations": {
+				"development": {
+					"options": {
+						"command": "vite dev",
+						"cwd": "apps/toolapp"
+					}
+				},
+				"production": {
+					"command": "cd apps/toolapp; pnpm dlx vite serve; cd ../.."
+				}
+			}
+		},
+		"preview": {
+			"executor": "nx:run-commands",
+			"defaultConfiguration": "development",
+			"options": {
+				"command": "vite preview",
+				"cwd": "apps/toolapp"
+			},
+			"configurations": {
+				"development": {
+					"command": "vite preview",
+					"cwd": "apps/toolapp"
+				},
+				"production": {
+					"buildTarget": "toolapp:build:production"
+				}
+			}
+		},
+		"test": {
+			"executor": "@nx/vite:test",
+			"outputs": ["{options.reportsDirectory}"],
+			"options": {
+				"passWithNoTests": true,
+				"reportsDirectory": "../../coverage/apps/toolapp"
+			}
+		},
+		"storybook": {
+			"executor": "@nx/storybook:storybook",
+			"options": {
+				"port": 4400,
+				"configDir": "apps/toolapp/.storybook"
+			},
+			"configurations": {
+				"ci": {
+					"quiet": true
+				}
+			}
+		},
+		"build-storybook": {
+			"executor": "@nx/storybook:build",
+			"outputs": ["{options.outputDir}"],
+			"options": {
+				"outputDir": "dist/storybook/toolapp",
+				"configDir": "apps/toolapp/.storybook"
+			},
+			"configurations": {
+				"ci": {
+					"quiet": true
+				}
+			}
+		},
+		"test-storybook": {
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "test-storybook -c apps/toolapp/.storybook --url=http://localhost:4400"
+			}
+		},
+		"e2e": {
+			"executor": "@nx/playwright:playwright",
+			"outputs": ["{workspaceRoot}/dist/.playwright/apps/toolapp"],
+			"options": {
+				"config": "apps/toolapp/playwright.config.ts"
+			}
+		}
+	}
+}

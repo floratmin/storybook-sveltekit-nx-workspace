@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "types": ["vite/client", "vitest"]
+    },
+    "files": [],
+    "include": ["playwright.config.ts"],
+    "references": [
+        {
+            "path": "./tsconfig.app.json"
+        },
+        {
+            "path": "./tsconfig.spec.json"
+        }
+    ],
+    "extends": [
+        "../../tsconfig.base.json",
+        "./.svelte-kit/tsconfig.json"
+    ]
+}
